@@ -3,7 +3,7 @@
 Note:-
 - Please refer docker-compose.yml for database cred
 
-#Installation steps
+# Installation steps
 - Download this repo in your local
 - docker build -t openweather-app/app .
 - docker-compose up
@@ -12,7 +12,7 @@ Note:-
 - docker-compose exec app php artisan migrate
 - docker-compose exec app npm run dev
 
-#To run unit test cases
+# To run unit test cases
 docker-compose exec app vendor/bin/phpunit
 
 # Default data load in database after application is running
@@ -26,4 +26,4 @@ Small description regarding application
 - then login into the system
 - first page will have default data loaded into the list (http://localhost/api/addWeatherDataInDatabase if not run before please hit this url in browser)
 - there is two button one for city's todays weather and other is for five day forecast of city
-- on lick of it you will get result in the list
+- on click of it you will get result in the list
