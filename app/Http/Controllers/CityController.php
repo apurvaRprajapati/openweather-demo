@@ -12,9 +12,9 @@ class CityController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index():JsonResponse
     {
         return response()->json([
             'data' => City::all()
@@ -22,27 +22,17 @@ class CityController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store default data into the database
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request):JsonResponse
     {
         //'london','mumbai','ahmedabad','chennai','pune'
         $cityIds = [2643743,1275339,1279233,1264527,1259229];
         $finalData = [];
-
+        City::truncate();
         $response = Http::get('https://api.openweathermap.org/data/2.5/group', [
             'id' => '2643743,1275339,1279233,1264527,1259229', 
             'appid' => env('OPENWEATHER_APPID'),
@@ -66,6 +56,7 @@ class CityController extends Controller
                 $finalData[] = $data;
             }
         } 
+        
         City::insert($finalData);
 
         return response()->json([
@@ -75,10 +66,10 @@ class CityController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * fetch todays weather of city
      *
      * @param  string  $city
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function show($city): JsonResponse
     {
@@ -117,12 +108,12 @@ class CityController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Fetch five dat forecast of city
      *
      * @param  string  $city
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function fetchForecast($city)
+    public function fetchForecast($city):JsonResponse
     {   
         $finalData = [];
         
@@ -168,26 +159,5 @@ class CityController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }
