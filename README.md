@@ -14,6 +14,7 @@ Note:-
 
 # To run unit test cases
 docker-compose exec app vendor/bin/phpunit
+- textcase file tests/CityTest.php
 
 # Default data load in database after application is running
 - http://localhost/api/addWeatherDataInDatabase
