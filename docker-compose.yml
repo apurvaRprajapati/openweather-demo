@@ -1,0 +1,48 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: openweather-app/app
+    container_name: openweather-app
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PASSWORD: password
+      DB_DATABASE: openweather
+    volumes:
+      - ./:/var/www
+      - ./config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ~/.ssh:/home/user/.ssh:ro
+  webserver:
+    image: nginx:alpine
+    container_name: openweather-webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - app
+  db:
+    image: mysql:5.7.22
+    ports:
+      - '${FORWARD_DB_PORT:-3306}:3306'
+    container_name: openweather-db
+    environment:
+      MYSQL_DATABASE: openweather
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
+    driver: local
+
+
+
+
+

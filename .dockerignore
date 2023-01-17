@@ -1,0 +1,19 @@
+node_modules
+public/uploads
+public/assets/img
+public/assets/img_olds
+public/assets/mp-3
+public/assets/Music Category Videos
+public/assets/video
+**/storage/*.key
+vendor
+**/.DS_Store
+.env
+.env.backup
+.git
+.dockerignore
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
