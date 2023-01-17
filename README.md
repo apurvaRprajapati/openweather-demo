@@ -3,7 +3,7 @@
 Note:-
 - Please refer docker-compose.yml for database cred
 
-Installation steps
+#Installation steps
 - Download this repo in your local
 - docker build -t openweather-app/app .
 - docker-compose up
@@ -12,10 +12,10 @@ Installation steps
 - docker-compose exec app php artisan migrate
 - docker-compose exec app npm run dev
 
-To run unit test cases
+#To run unit test cases
 docker-compose exec app vendor/bin/phpunit
 
-Default data load in database after application is running
+# Default data load in database after application is running
 - http://localhost/api/addWeatherDataInDatabase
   Hit this url to dump data into the database from openweathermap
 
