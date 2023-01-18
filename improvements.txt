@@ -1,0 +1,7 @@
+ Additional functionality or improvements can be done in the app if i spent more time working on it.
+
+- Validation for inputs
+- Exception handling of openweather api in proper manner with proper error message
+- More detail test cases
+
+
