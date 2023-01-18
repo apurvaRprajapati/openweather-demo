@@ -20,7 +20,7 @@ docker-compose exec app vendor/bin/phpunit
 - http://localhost/api/addWeatherDataInDatabase
   Hit this url to dump data into the database from openweathermap
 
-Small description regarding application 
+# Small description regarding application 
 - Once your environment will be setup application will be run on http://localhost
 - I have used opensource code to build this app 
 - Please create user by register module - http://localhost/register
@@ -28,3 +28,6 @@ Small description regarding application
 - first page will have default data loaded into the list (http://localhost/api/addWeatherDataInDatabase if not run before please hit this url in browser)
 - there is two button one for city's todays weather and other is for five day forecast of city
 - on click of it you will get result in the list
+
+# Improvement list
+  I have added my comment in improvements.txt
